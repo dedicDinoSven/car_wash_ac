@@ -89,7 +89,7 @@ const update = async (id, data) => {
         const user = await User.findByIdAndUpdate(id, data, { new: true })
             .populate("role", "-__v");
 
-        if (!user) throw new Error("User does not exist!")
+        if (!user) throw new Error("User does not exist!");
 
         return user;
     } catch (err) {
@@ -98,13 +98,15 @@ const update = async (id, data) => {
 };
 
 const remove = async (id) => {
-   try {
-       if (!id.match(/^[0-9a-fA-F]{24}$/)) throw new Error("Invalid ID!");
+    if (!id.match(/^[0-9a-fA-F]{24}$/)) throw new Error("Invalid ID!");
+    try {
+        const user = await User.findById(id);
+        if (!user) throw new Error("User does not exist!");
 
-       return await User.findByIdAndDelete(id);
-   } catch (err) {
-       throw err || "Error while trying to delete user!"
-   }
+        return await User.deleteOne({ _id: id });
+    } catch (err) {
+        throw err || "Error while trying to delete user!";
+    }
 };
 
 const UserService = {
