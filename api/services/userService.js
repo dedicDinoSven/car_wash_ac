@@ -41,7 +41,7 @@ const login = async (email, password) => {
             expiresIn: "30d",
         });
 
-        return { user, token };
+        return { data: user, token };
     } catch (err) {
         throw err || "Error while trying to login!";
     }

@@ -1,0 +1,26 @@
+.login-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .login-form {
+        max-width: 300px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid $blue;
+        border-radius: 5px;
+        padding: 40px 30px 60px;
+
+        h1 {
+            color: $blue;
+        }
+
+        @media only screen and (max-width: 400px) {
+            width: unset;
+        }
+    }
+}

@@ -6,7 +6,7 @@ class Request {
         BaseUrl: process.env.REACT_APP_BACKEND_URL,
         Headers: {
             "Content-Type": "application/json",
-            "x-auth-token": "",
+            "x-auth-token": JSON.parse(localStorage.getItem("user"))?.token
         },
         queryParams: {},
     };
