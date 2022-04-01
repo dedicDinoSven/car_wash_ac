@@ -38,6 +38,40 @@
   cursor: not-allowed;
 }
 
+.input-field-wrapper {
+  position: relative;
+  margin: 30px;
+}
+.input-field-wrapper label {
+  position: absolute;
+  left: 8px;
+  top: 6px;
+  z-index: 10;
+  background-color: #fff;
+  color: #b5b8a3;
+  transition: transform 150ms ease-out, font-size 150ms ease-out;
+}
+.input-field-wrapper input, .input-field-wrapper textarea {
+  width: 100%;
+  position: relative;
+  padding: 8px 0 6px 8px;
+  outline: 0;
+  border: 1px solid #b5b8a3;
+  border-radius: 5px;
+}
+.input-field-wrapper input:focus, .input-field-wrapper textarea:focus {
+  border-color: #5688c7;
+}
+.input-field-wrapper.focused label {
+  transform: translateY(-150%);
+  font-size: 0.85em;
+}
+.input-field-wrapper textarea {
+  resize: none;
+  font-family: "Roboto", serif;
+  font-size: 16px;
+}
+
 body {
   margin: 0;
   padding: 0;
