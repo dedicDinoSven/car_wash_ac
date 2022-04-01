@@ -1,0 +1,51 @@
+.button-wrapper {
+    padding: 8px 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: $white;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+
+    &.create {
+        background-color: $green;
+
+        &:hover {
+            &:not([disabled]) {
+                background-color: $white;
+                color: $green;
+                border: 1px solid $green;
+            }
+        }
+    }
+
+    &.submit {
+        background-color: $blue;
+
+        &:hover {
+            &:not([disabled]) {
+                background-color: $white;
+                color: $blue;
+                border: 1px solid $blue;
+            }
+        }
+    }
+
+    &.remove {
+        background-color: $red;
+
+        &:hover {
+            &:not([disabled]) {
+                background-color: $white;
+                color: $red;
+                border: 1px solid $red;
+            }
+        }
+    }
+
+    &:disabled {
+        background-color: $gray;
+        cursor: not-allowed;
+    }
+}

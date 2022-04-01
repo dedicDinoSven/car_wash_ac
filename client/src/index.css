@@ -1,4 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+.button-wrapper {
+  padding: 8px 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fffffa;
+  white-space: nowrap;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+.button-wrapper.create {
+  background-color: #9bc53d;
+}
+.button-wrapper.create:hover:not([disabled]) {
+  background-color: #fffffa;
+  color: #9bc53d;
+  border: 1px solid #9bc53d;
+}
+.button-wrapper.submit {
+  background-color: #5688c7;
+}
+.button-wrapper.submit:hover:not([disabled]) {
+  background-color: #fffffa;
+  color: #5688c7;
+  border: 1px solid #5688c7;
+}
+.button-wrapper.remove {
+  background-color: #c13336;
+}
+.button-wrapper.remove:hover:not([disabled]) {
+  background-color: #fffffa;
+  color: #c13336;
+  border: 1px solid #c13336;
+}
+.button-wrapper:disabled {
+  background-color: #b5b8a3;
+  cursor: not-allowed;
+}
+
 body {
   margin: 0;
   padding: 0;
