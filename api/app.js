@@ -14,5 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 
 app.use("/api/users", require("./routes/user"));
+app.use("/api/washing-program", require("./routes/washingProgram"));
+app.use("/api/order", require("./routes/order"));
 
 module.exports = app;

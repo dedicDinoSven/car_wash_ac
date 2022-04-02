@@ -3,9 +3,6 @@ const jwt = require("jsonwebtoken");
 
 const create = async (data) => {
     const { firstName, lastName, email, password } = data;
-    if (!firstName) throw new Error("First name is required!");
-    if (!lastName) throw new Error("Last name is required!");
-    if (!email) throw new Error("Email is required!");
 
     try {
         const user = await User.findOne({ email });
@@ -47,10 +44,10 @@ const login = async (email, password) => {
     }
 };
 
-const getAll = () => {
+const getAll = async () => {
     try {
-        const role = UserRole.findOne({ name: "Customer" });
-        return User.find({ role: role._id }, "-__v -password");
+        const role = await UserRole.findOne({ name: "Customer" });
+        return await User.find({ role: role._id }, "-__v -password");
     } catch (err) {
         throw err || "Error while fetching customers!";
     }
@@ -81,8 +78,6 @@ const update = async (id, data) => {
             `Invalid field(s) for update! Allowed updates are first name, last name and email!`);
 
     if (!id.match(/^[0-9a-fA-F]{24}$/)) throw new Error("Invalid ID!");
-
-    if (!data.email) throw new Error("Email is required!");
 
     try {
         const existingUser = await User.findOne(

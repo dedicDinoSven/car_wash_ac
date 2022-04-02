@@ -1,6 +1,5 @@
 const UserService = require("../services/userService");
 
-
 const create = async (req, res) => {
     try {
         const user = await UserService.create(req.body);
