@@ -9,7 +9,7 @@ import AddOrder from "../addOrder";
 import AddProgram from "../addProgram";
 
 const Navbar = (props) => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
     const [modalStates, setModalStates] = useState({
         addCustomer: false, addOrder: false, addProgram: false
     });
