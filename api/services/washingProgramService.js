@@ -12,6 +12,13 @@ const createStep = async (name) => {
     }
 };
 
+const getAllSteps = async () => {
+    return await ProgramStep.find({}, "-__v")
+        .catch((err) => {
+            throw err || "Error while fetching program steps!";
+        });
+};
+
 const removeStep = async (id) => {
     if (!id.match(/^[0-9a-fA-F]{24}$/)) throw new Error("Invalid ID!");
     try {
@@ -40,7 +47,9 @@ const createProgram = async (data) => {
 const getAllPrograms = async () => {
     return await WashingProgram.find({}, "-__v")
         .populate("steps", "-__v")
-        .catch((err) => throw err || "Error while fetching programs!");
+        .catch((err) => {
+            throw err || "Error while fetching programs!";
+        });
 };
 
 const getProgramById = async (id) => {
@@ -99,6 +108,7 @@ const removeProgram = async (id) => {
 
 const WashingProgramService = {
     createStep,
+    getAllSteps,
     removeStep,
     createProgram,
     getAllPrograms,

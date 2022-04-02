@@ -10,11 +10,25 @@ const createStep = async (req, res) => {
     }
 };
 
+
+const getAllSteps = async (req, res) => {
+    try {
+        const steps = await WashingProgramService.getAllSteps();
+
+        res.status(200).send(steps);
+    } catch (err) {
+        res.status(404).send({ message: err.message }).end();
+    }
+};
+
 const removeStep = async (req, res) => {
     try {
         await WashingProgramService.removeStep(req.params.id);
 
-        res.status(200).send({ message: "Step deleted successfully!" });
+        res.status(200).send({
+            _id: req.params.id,
+            message: "Step deleted successfully!"
+        });
     } catch (err) {
         res.status(400).send({ message: err.message }).end();
     }
@@ -66,7 +80,10 @@ const removeProgram = async (req, res) => {
     try {
         await WashingProgramService.removeProgram(req.params.id);
 
-        res.status(200).send({ message: "Program deleted successfully!" });
+        res.status(200).send({
+            _id: req.params.id,
+            message: "Program deleted successfully!"
+        });
     } catch (err) {
         res.status(400).send({ message: err.message }).end();
     }
@@ -74,6 +91,7 @@ const removeProgram = async (req, res) => {
 
 const WashingProgramController = {
     createStep,
+    getAllSteps,
     removeStep,
     createProgram,
     getAllPrograms,

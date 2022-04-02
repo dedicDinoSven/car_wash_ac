@@ -4,8 +4,9 @@ const WashingProgramController = require(
     "../controllers/washingProgramController");
 const auth = require("../middleware/auth");
 
-router.post("/step", auth, WashingProgramController.createStep);
-router.delete("/step/:id", auth, WashingProgramController.removeStep);
+router.get("/steps", auth, WashingProgramController.getAllSteps);
+router.post("/steps", auth, WashingProgramController.createStep);
+router.delete("/steps/:id", auth, WashingProgramController.removeStep);
 
 router.get("/", auth, WashingProgramController.getAllPrograms);
 router.get("/:id", auth, WashingProgramController.getProgramById);
