@@ -33,7 +33,11 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "UserRole",
         required: true
-    }
+    },
+    orders: [{
+        type: Schema.Types.ObjectId,
+        ref: "Order"
+    }]
 }, { timestamps: true });
 
 // method for password hashing,

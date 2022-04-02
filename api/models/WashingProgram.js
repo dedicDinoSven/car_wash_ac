@@ -19,7 +19,7 @@ const washingProgramSchema = new Schema({
     },
     steps: [{
         type: Schema.Types.ObjectId,
-        ref: "ProgramStep"
+        ref: "ProgramStep",
     }],
     price: {
         type: Number,
