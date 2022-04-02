@@ -48,8 +48,12 @@ const login = async (email, password) => {
 };
 
 const getAll = () => {
-    return User.find({}, "-__v -password")
-        .populate("role", "-__v");
+    try {
+        const role = UserRole.findOne({ name: "Customer" });
+        return User.find({ role: role._id }, "-__v -password");
+    } catch (err) {
+        throw err || "Error while fetching customers!";
+    }
 };
 
 const getById = (id) => {
