@@ -78,6 +78,101 @@
   font-size: 16px;
 }
 
+.navbar {
+  height: 60px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: #5688c7;
+}
+
+.navbar-icon {
+  margin-left: 1.5rem;
+  font-size: 25px;
+  color: #fffffa;
+  cursor: pointer;
+}
+
+.navbar-menu {
+  width: 270px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  background-color: #5688c7;
+  transition: 850ms;
+}
+.navbar-menu .navbar-menu-items {
+  width: 100%;
+}
+.navbar-menu .navbar-menu-items .navbar-toggle {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: #5688c7;
+}
+.navbar-menu .navbar-menu-items .navbar-item {
+  height: 60px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color: #fffffa;
+  font-size: 18px;
+  padding: 0 28px;
+  list-style: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.navbar-menu .navbar-menu-items .navbar-item span {
+  margin-left: 16px;
+}
+.navbar-menu .navbar-menu-items .navbar-item:hover {
+  color: #0c0c0c;
+}
+.navbar-menu.open {
+  left: 0;
+  transition: 350ms;
+}
+
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  overflow-y: auto;
+}
+.modal-wrapper .modal {
+  background-color: #fffffa;
+  height: fit-content;
+  border-radius: 5px;
+  padding: 30px 25px 50px;
+  position: relative;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+.modal-wrapper .close {
+  position: absolute;
+  top: 10px;
+  right: 6px;
+  background: 0 0;
+  height: 24px;
+  width: 24px;
+  border: 0;
+  cursor: pointer;
+}
+
 .login-wrapper {
   height: 100vh;
   display: flex;
@@ -86,8 +181,7 @@
   justify-content: center;
 }
 .login-wrapper .login-form {
-  max-width: 300px;
-  width: 100%;
+  width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -100,25 +194,24 @@
 }
 @media only screen and (max-width: 400px) {
   .login-wrapper .login-form {
-    width: unset;
+    width: 300px;
   }
 }
 
 * {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: "Roboto", sans-serif;
 }
 
-body {
-  font-family: "Roboto", sans-serif;
-  background-color: #fffffa;
-}
-body .app-wrapper {
-  width: 100vw;
-  height: 100vh;
+.app-wrapper {
+  width: calc(100vw - 270px);
+  height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 270px;
 }
 
 /*# sourceMappingURL=index.css.map */

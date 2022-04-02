@@ -6,8 +6,7 @@
     justify-content: center;
 
     .login-form {
-        max-width: 300px;
-        width: 100%;
+        width: 320px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -20,7 +19,7 @@
         }
 
         @media only screen and (max-width: 400px) {
-            width: unset;
+            width: 300px;
         }
     }
 }
