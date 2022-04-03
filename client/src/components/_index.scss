@@ -5,3 +5,37 @@
 @import "./addCustomer/index";
 @import "./addOrder/index";
 @import "./addProgram/index";
+
+.table-wrapper {
+    height: max-content;
+    border: 4px solid $black;
+    font-size: 16px;
+    margin-top: 20px;
+
+    table {
+        border-collapse: collapse;
+
+        thead {
+            background-color: $blue;
+            color: $white;
+        }
+
+        td, th {
+            text-align: left;
+            padding: 8px;
+            height: 10px;
+        }
+
+        th {
+            border-right: 2px solid $black;
+
+            &:last-of-type {
+                border-right: none;
+            }
+        }
+
+        td {
+            border: 2px solid $black;
+        }
+    }
+}
