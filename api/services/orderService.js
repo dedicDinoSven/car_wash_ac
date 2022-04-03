@@ -29,6 +29,8 @@ const create = async (data) => {
             { $push: { orders: order._id } },
             { new: true });
 
+        await order.populate("user", "-__v -password -orders -role");
+        await order.populate("program", "-__v -steps");
         return order;
     } catch (err) {
         throw err || "Error while creating new order!";

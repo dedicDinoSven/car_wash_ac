@@ -38,7 +38,16 @@ const createProgram = async (data) => {
         if (existingProgram)
             throw new Error("Program with given name already exists!");
 
-        return WashingProgram.create(data);
+        const program = new WashingProgram({
+            name: data.name,
+            steps: data.steps,
+            price: data.price
+        });
+
+        await program?.save();
+        await program?.populate("steps", "-__v");
+        return program;
+
     } catch (err) {
         throw err || "Error while creating new program!";
     }
