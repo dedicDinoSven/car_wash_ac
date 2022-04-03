@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const WashingProgramController = require(
-    "../controllers/washingProgramController");
+const WashingProgramController = require("../controllers/washingProgramController");
 const auth = require("../middleware/auth");
 
 router.get("/steps", auth, WashingProgramController.getAllSteps);

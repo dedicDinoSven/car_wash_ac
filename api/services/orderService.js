@@ -1,14 +1,35 @@
 const Order = require("../models/Order");
+const { WashingProgram } = require("../models/WashingProgram");
+const { User } = require("../models/User");
 
 const create = async (data) => {
     try {
         const userOrdersCount = await Order.count({ user: data.user });
 
-        const program = await WashingProgramService.getById(data.program);
+        const program = await WashingProgram.findById(data.program);
 
-        //const order = new Order({});
-        //await order.save();
-        return { userOrdersCount, program };
+        let priceToPay, discount = false;
+
+        if ((userOrdersCount + 1) % 7 === 0) {
+            priceToPay = program.price - (program.price / 100) * 15;
+            discount = true;
+        } else priceToPay = program.price;
+
+        console.log(priceToPay);
+
+        const order = new Order({
+            user: data.user,
+            program: program._id,
+            priceToPay: priceToPay,
+            discount: discount
+        });
+        await order.save();
+
+        await User.findByIdAndUpdate(data.user,
+            { $push: { orders: order._id } },
+            { new: true });
+
+        return order;
     } catch (err) {
         throw err || "Error while creating new order!";
     }
@@ -38,7 +59,7 @@ const getById = async (id) => {
                 populate: {
                     path: "steps",
                     select: "-__v",
-                    model: "ProgramSteps",
+                    model: "ProgramStep",
                 }
             });
     } catch (err) {
@@ -70,7 +91,7 @@ const update = async (id, data) => {
                 populate: {
                     path: "steps",
                     select: "-__v",
-                    model: "ProgramSteps",
+                    model: "ProgramStep",
                 }
             });
 
