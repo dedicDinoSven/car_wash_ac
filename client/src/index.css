@@ -179,11 +179,6 @@
   cursor: pointer;
 }
 
-.dropdown-input {
-  width: 100%;
-  margin-top: 30px;
-}
-
 .table-wrapper {
   height: max-content;
   border: 4px solid #0c0c0c;
@@ -210,6 +205,16 @@
 }
 .table-wrapper table td {
   border: 2px solid #0c0c0c;
+}
+
+.dropdown-input {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.dropdown-input-single {
+  width: 300px;
+  margin-top: 30px;
 }
 
 .login-wrapper {

@@ -2,9 +2,6 @@
 @import "./inputField/index";
 @import "./navbar/index";
 @import "./modal/index";
-@import "./addCustomer/index";
-@import "./addOrder/index";
-@import "./addProgram/index";
 
 .table-wrapper {
     height: max-content;
@@ -38,4 +35,14 @@
             border: 2px solid $black;
         }
     }
+}
+
+.dropdown-input {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.dropdown-input-single {
+    width: 300px;
+    margin-top: 30px;
 }

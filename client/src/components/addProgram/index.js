@@ -74,7 +74,6 @@ const AddProgram = (props) => {
                              { ...data, steps: selected })}
                          allowSelectAll={true} value={data.steps}
                          className="dropdown-input" />
-
             <Button onClick={handleSubmit} variant="submit"
                     style={{ marginTop: "30px" }}>Submit</Button>
         </Modal>
@@ -83,8 +82,3 @@ const AddProgram = (props) => {
 
 export default AddProgram;
 
-const customStyles = {
-    control: () => ({
-        width: 215
-    })
-};
