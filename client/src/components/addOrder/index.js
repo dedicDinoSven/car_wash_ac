@@ -3,31 +3,18 @@ import Modal from "../modal";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../redux/userSlice";
 import { getPrograms } from "../../redux/washingProgramSlice";
-import { components, default as ReactSelect } from "react-select";
+import { default as ReactSelect } from "react-select";
 import Button from "../button";
-import { createOrder } from "../../redux/orderSlice";
-
-const Option = (props) => {
-    return (
-        <div>
-            <components.Option {...props}>
-                <input type="checkbox" checked={props.isSelected}
-                       onChange={() => null} />
-                <label>{" "}{props.label}</label>
-            </components.Option>
-
-        </div>
-    );
-};
+import { createOrder, reset } from "../../redux/orderSlice";
+import { toast } from "react-toastify";
 
 const AddOrder = (props) => {
-    const [data, setData] = useState({
-        user: "", program: []
-    });
+    const [data, setData] = useState({ user: "", program: "" });
 
     const dispatch = useDispatch();
     const { users } = useSelector((state) => state.users);
     const { programs } = useSelector((state) => state.programs);
+    const { isError, message } = useSelector((state) => state.orders);
 
     useEffect(() => {
         dispatch(getUsers());
@@ -49,21 +36,27 @@ const AddOrder = (props) => {
         props?.close();
     };
 
+    useEffect(() => {
+        if (isError) toast.error(message);
+
+        dispatch(reset());
+    }, [isError, message, dispatch]);
+
     return (
         <Modal close={props?.close}>
             <h3>New Order</h3>
-            <ReactSelect options={userOptions} closeMenuOnSelect
-                         hideSelectedOptions={false} components={{ Option }}
+            <ReactSelect className="dropdown-input" options={userOptions}
+                         closeMenuOnSelect placeholder="Customer *"
+                         hideSelectedOptions={false} value={data.user}
                          onChange={(selected) => setData(
-                             { ...data, user: selected })}
-                         value={data.user} className="dropdown-input" />
-            <ReactSelect options={programOptions} closeMenuOnSelect
-                         hideSelectedOptions={false} components={{ Option }}
+                             { ...data, user: selected })} />
+            <ReactSelect className="dropdown-input" options={programOptions}
+                         closeMenuOnSelect placeholder="Washing Program *"
+                         hideSelectedOptions={false} value={data.program}
                          onChange={(selected) => setData(
-                             { ...data, program: selected })}
-                         value={data.program}
-                         className="dropdown-input-single" />
+                             { ...data, program: selected })} />
             <Button onClick={handleSubmit} variant="submit"
+                    disabled={data.user === "" || data.program === ""}
                     style={{ marginTop: "30px" }}>Submit</Button>
         </Modal>
     );

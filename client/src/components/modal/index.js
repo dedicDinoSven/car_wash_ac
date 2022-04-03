@@ -22,7 +22,7 @@ const Modal = (props) => {
     return (
         <div className="modal-wrapper" onClick={onWrapperClick}
              style={props?.style}>
-            <div className={"modal fadeIn " + props?.className}
+            <div className={"modal " + props?.className}
                  onClick={(e) => e.stopPropagation()}>
                 <AiOutlineClose className="close" onClick={() => {
                     props.close && props.close();

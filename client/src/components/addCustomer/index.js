@@ -13,29 +13,28 @@ const AddCustomer = (props) => {
     });
 
     const dispatch = useDispatch();
-    const { isSuccess, isError, message } = useSelector((state) => state.users);
+    const { isError, message } = useSelector((state) => state.users);
 
     const handleSubmit = () => {
         if (!Validation.validateEmail(data.email))
             toast.error("Please enter valid email!");
 
         dispatch(createUser(data));
+        props?.close();
     };
 
     useEffect(() => {
         if (isError) toast.error(message);
 
-        if (isSuccess) props?.close();
-
         dispatch(reset());
-    }, [isSuccess, isError, message, dispatch]);
+    }, [isError, message, dispatch]);
 
     return (
         <Modal close={props?.close}>
             <h3>New Customer</h3>
             <InputField type="text" id="firstName" name="firstName"
                         placeholder="First Name *" autoFocus
-                        value={data.firstName}
+                        style={{ width: "300px" }} value={data.firstName}
                         setValue={(e) => setData(
                             { ...data, firstName: e.target.value })} />
             <InputField type="text" id="lastName" name="lastName"

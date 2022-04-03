@@ -12,13 +12,14 @@ const ProgramTable = ({ data }) => {
                 </tr>
                 </thead>
                 <tbody>
-                {data?.map((item) => {
+                {data?.map((item, index) => {
                     return (
-                        <tr className="table-row">
+                        <tr key={index}>
                             <td>{item?.name}</td>
                             <td>{item?.price}</td>
-                            <td>{item?.steps.map((step) => {
-                                return (step?.name + ", ");
+                            <td>{item?.steps.map((step, index) => {
+                                return <span key={index}>
+                                    {(index ? ", " : " ") + step?.name}</span>;
                             })}</td>
                         </tr>
                     );
