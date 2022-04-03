@@ -9,13 +9,12 @@ import AddOrder from "../addOrder";
 import AddProgram from "../addProgram";
 
 const Navbar = (props) => {
-    const [isOpen, setIsOpen] = useState(true);
     const [modalStates, setModalStates] = useState({
         addCustomer: false, addOrder: false, addProgram: false
     });
     const dispatch = useDispatch();
 
-    const toggleSidebar = () => setIsOpen(!isOpen);
+    const toggleSidebar = () => props?.setIsOpen(!props?.isOpen);
 
     const sidebarData = [
         {
@@ -45,7 +44,7 @@ const Navbar = (props) => {
 
     useEffect(() => {
         if (props?.clickedOutside)
-            setIsOpen(false);
+            props?.setIsOpen(false);
     }, [props?.clickedOutside]);
 
     return (
@@ -54,7 +53,7 @@ const Navbar = (props) => {
                 <div className="navbar">
                     <FaBars onClick={toggleSidebar} className="navbar-icon" />
                 </div>
-                <nav className={`navbar-menu ${isOpen ? "open" : ""}`}>
+                <nav className={`navbar-menu ${props?.isOpen ? "open" : ""}`}>
                     <ul className="navbar-menu-items" onClick={toggleSidebar}>
                         <li className="navbar-toggle">
                             <AiOutlineClose className="navbar-icon" />

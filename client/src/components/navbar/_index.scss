@@ -3,14 +3,19 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    background-color: $blue;
+    background-color: $white;
+    border-bottom: 2px solid $blue;
 }
 
 .navbar-icon {
     margin-left: 1.5rem;
     font-size: 25px;
-    color: $white;
+    color: $blue;
     cursor: pointer;
+
+    &:hover {
+        color: $black;
+    }
 }
 
 .navbar-menu {
@@ -21,8 +26,9 @@
     position: absolute;
     top: 0;
     left: -100%;
-    background-color: $blue;
+    background-color: $white;
     transition: 850ms;
+    border-right: 2px solid $blue;
 
     .navbar-menu-items {
         width: 100%;
@@ -33,7 +39,8 @@
             display: flex;
             justify-content: start;
             align-items: center;
-            background-color: $blue;
+            background-color: $white;
+            border-bottom: 2px solid $blue;
         }
 
         .navbar-item {
@@ -41,7 +48,7 @@
             display: flex;
             justify-content: start;
             align-items: center;
-            color: $white;
+            color: $blue;
             font-size: 18px;
             padding: 0 28px;
             list-style: none;
