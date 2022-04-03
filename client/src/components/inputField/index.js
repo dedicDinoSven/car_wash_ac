@@ -25,7 +25,8 @@ const InputField = (props) => {
                        disabled={props?.disabled ?? false}
                        autoFocus={props?.autoFocus ?? false}
                        onFocus={() => setFocused(true)}
-                       onBlur={handleBlur} />}
+                       onBlur={handleBlur}
+                       min={1} />}
         </div>
     );
 };
